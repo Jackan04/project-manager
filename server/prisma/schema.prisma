@@ -55,7 +55,7 @@ model Subtask {
   completed Boolean @default(false) 
   taskId Int
 
-  task Task @relation(fields: [taskId], references: [id])
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
 
 }
 
