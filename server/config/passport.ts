@@ -1,8 +1,7 @@
 import passport from "passport";
-import "dotenv/config";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import { prisma } from "../lib/prisma.js";
-import { JwtPayload, Secret } from "jsonwebtoken";
+import { JwtPayload } from "jsonwebtoken";
 import { DoneCallback } from "passport";
 import { StrategyOptionsWithSecret } from "passport-jwt";
 
