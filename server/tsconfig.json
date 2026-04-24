@@ -4,9 +4,17 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "outDir": "dist",
-    "rootDir": "src",
+    // "rootDir": "src",
     "strict": true,
     "esModuleInterop": true
   },
-  "include": ["src"]
+  "include": [
+    "index.ts",
+    "config",
+    "controllers",
+    "generated",
+    "lib",
+    "middleware",
+    "routes"
+  ]
 }
