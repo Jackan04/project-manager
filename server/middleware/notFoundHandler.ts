@@ -6,7 +6,7 @@ export function notFoundHandler(
   res: Response,
   next: NextFunction,
 ) {
-  next(new ApiError(`Route ${req.method} ${req.path} not found`, 404));
+  next(new ApiError(404, `Route ${req.method} ${req.path} not found`));
 }
 
 export default notFoundHandler;
