@@ -7,34 +7,32 @@ datasource db {
   provider = "postgresql"
 }
 
-model User { 
-  id    Int     @id @default(autoincrement()) 
-  email String  @unique
-  name  String
-  password String 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  projects Project[]
-  tasks Task[]
-} 
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  projects  Project[]
+  tasks     Task[]
+}
 
 model Project {
-  id            Int       @id @default(autoincrement())
+  id            String    @id @default(cuid())
   title         String
   completed     Boolean   @default(false)
   scheduledDate DateTime?
-  startdate      DateTime?
+  startdate     DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  userId        Int
-
+  userId        String
   user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   tasks         Task[]
 }
 
 model Task {
-  id            Int       @id @default(autoincrement())
+  id            String    @id @default(cuid())
   title         String
   notes         String?
   completed     Boolean   @default(false)
@@ -42,20 +40,17 @@ model Task {
   deadline      DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  userId        Int
-  projectId     Int?
+  userId        String
+  projectId     String?
   user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   project       Project?  @relation(fields: [projectId], references: [id])
   subtasks      Subtask[]
 }
 
 model Subtask {
-  id        Int     @id @default(autoincrement()) 
-  title String
-  completed Boolean @default(false) 
-  taskId Int
-
-  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
-
+  id        String  @id @default(cuid())
+  title     String
+  completed Boolean @default(false)
+  taskId    String
+  task      Task    @relation(fields: [taskId], references: [id], onDelete: Cascade)
 }
-
