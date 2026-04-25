@@ -1,6 +1,6 @@
 import jwt, { SignOptions, Secret } from "jsonwebtoken";
 
-export const signToken = (userId: number) => {
+export const signToken = (userId: string) => {
   const secret = process.env.JWT_SECRET;
   const expiresIn = process.env.JWT_EXPIRES_IN;
 
