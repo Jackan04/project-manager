@@ -21,6 +21,7 @@ passport.use(
     try {
       const user = await prisma.user.findUnique({
         where: { id: Number(payload.sub) },
+        omit: { password: true },
       });
 
       if (!user) return done(null, false);
