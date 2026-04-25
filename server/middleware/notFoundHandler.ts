@@ -1,12 +1,8 @@
-import { Request, Response, NextFunction } from "express";
 import ApiError from "../config/ApiError.js";
+import { RequestHandler } from "express";
 
-export function notFoundHandler(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
+const notFoundHandler: RequestHandler = (req, res, next) => {
   next(new ApiError(404, `Route ${req.method} ${req.path} not found`));
-}
+};
 
 export default notFoundHandler;
